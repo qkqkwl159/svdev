@@ -25,6 +25,8 @@ class Stores():
         db.close()
         return  result_dict_list
 
-    def jsondata(jsondata):
-        json_data = jsondata.json()
-        print(json_data)
+    def db_insert(db,eyeCNT,yCNT):
+        cursor = db.cursor()
+        sql = f"INSERT INTO  SLEEPINFO VALUES({eyeCNT},{yCNT})"
+        cursor.execute(sql)
+        db.commit()
