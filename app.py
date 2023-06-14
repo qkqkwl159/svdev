@@ -4,9 +4,9 @@ from models import Stores
 app = Flask(__name__)
 @app.route('/')
 def select():
-    db = Stores.conn()
-    data = Stores.db_sel(db)
-    return jsonify(data)
+    # db = Stores.conn()
+    # data = Stores.db_sel(db)
+    return render_template('post.html')
 
 
 
