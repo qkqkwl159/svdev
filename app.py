@@ -4,8 +4,14 @@ from models import Stores
 app = Flask(__name__)
 @app.route('/')
 def select():
-    # db = Stores.conn()
-    # data = Stores.db_sel(db)
+    db = Stores.conn()
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM USERS")
+    result = cursor.fetchall()
+    print(result)
+    db.close()
+
+    #return render_template('post.html')
     return render_template('post.html')
 
 
@@ -16,8 +22,7 @@ def insert():
         db = Stores.conn()
         eye = request.form.get('eye')
         mouth = request.form.get('mouth')
-        
-        print(eye, mouth)
+
         Stores.db_insert(db,eye,mouth)
         return render_template('post.html')
     else:
